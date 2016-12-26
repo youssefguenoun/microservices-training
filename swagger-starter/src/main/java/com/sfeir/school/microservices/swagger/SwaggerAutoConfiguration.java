@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.ResponseEntity;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -56,7 +55,6 @@ public class SwaggerAutoConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
                 .forCodeGeneration(true)
-                .genericModelSubstitutes(ResponseEntity.class)
                 .ignoredParameterTypes(Pageable.class)
                 .ignoredParameterTypes(java.sql.Date.class)
                 .directModelSubstitute(java.time.LocalDate.class, java.sql.Date.class)
