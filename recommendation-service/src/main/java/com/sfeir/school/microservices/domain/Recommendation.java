@@ -1,4 +1,4 @@
-package com.sfeir.school.microservices.service;
+package com.sfeir.school.microservices.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

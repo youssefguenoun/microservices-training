@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sfeir.school.microservices.service.Recommendation;
+import com.sfeir.school.microservices.domain.Recommendation;
 
 @RestController
 public class RecommendationResource {
@@ -22,7 +22,7 @@ public class RecommendationResource {
      * @param productId
      * @return
      */
-    @GetMapping("/recommendation")
+    @GetMapping("/recommendations")
     public List<Recommendation> getRecommendations(
             @RequestParam(value = "productId",  required = true) int productId) {
 

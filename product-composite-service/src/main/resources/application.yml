@@ -11,3 +11,5 @@ management:
 
 server:
   port: 0
+
+feign.hystrix.enabled: false

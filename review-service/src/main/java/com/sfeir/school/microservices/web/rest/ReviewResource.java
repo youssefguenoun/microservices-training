@@ -22,7 +22,7 @@ public class ReviewResource {
      * @param productId
      * @return
      */
-    @GetMapping("/review")
+    @GetMapping("/reviews")
     public List<Review> getReviews(
             @RequestParam(value = "productId",  required = true) int productId) {
 

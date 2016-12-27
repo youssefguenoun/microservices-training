@@ -15,7 +15,7 @@ public class ProductResource {
      * @param productId
      * @return
      */
-    @GetMapping("/product/{productId}")
+    @GetMapping("/products/{productId}")
     public Product getProduct(@PathVariable int productId) {
 
         return new Product(productId, "name", 123);
