@@ -1,10 +1,10 @@
 package com.sfeir.school.microservices.service.dto;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class ReviewDto {
     private int productId;
     private int reviewId;
