@@ -25,31 +25,25 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/tasks")
 public class TaskResource {
 
     @Autowired
     private TaskRepository taskRepository;
 
-    private int version = 0;
 
-    @ApiOperation(value = "Gets 'Task' objects.", notes = "Optional query param of **size** determines size of returned array", response = Task.class, responseContainer = "List")
-    @ApiResponses(value = {@io.swagger.annotations.ApiResponse(code = 200, message = "Successful response") })
     @Transactional(readOnly = true)
-    @RequestMapping(path="/tasks", method = RequestMethod.GET)
-    @CrossOrigin(origins ="http://editor.swagger.io")
+    @GetMapping
     ResponseEntity<List<Task>> getTasks(Pageable pageable) throws URISyntaxException {
         Page<Task> page = taskRepository.findAll(pageable);
 
         //Should be configured with the full url of the service
         String baseUrl = "/api/tasks";
         HttpHeaders paginationHeaders = PaginationUtil.generatePaginationHttpHeaders(page, "/api/tasks");
-        CacheControl cacheControl = CacheControl.noCache().cachePublic().maxAge(2, TimeUnit.DAYS);
-        String etag = "V" + version;
-        return ResponseEntity.ok().cacheControl(cacheControl).eTag(etag).body(page.getContent());
+        return ResponseEntity.ok().body(page.getContent());
     }
 
-    @RequestMapping(path ="/tasks/{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
     @Transactional(readOnly = true)
     ResponseEntity<Task> getTask(@PathVariable Long id) {
         Optional<Task> task = Optional.ofNullable(taskRepository.findOne(id));
@@ -60,23 +54,22 @@ public class TaskResource {
         }
     }
 
-    @RequestMapping(value = "/tasks", method = RequestMethod.POST)
+    @PostMapping
     public ResponseEntity<Task> createTask(@RequestBody Task task) throws URISyntaxException {
         Task result = taskRepository.save(task);
         URI newRessourceURI = new URI("/api/tasks/" + result.getId());
-        version++;
         return ResponseEntity.created(newRessourceURI).body(task);
     }
 
 
-    @RequestMapping(value = "/tasks/{id}", method = RequestMethod.PUT)
+    @PutMapping("/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) throws URISyntaxException {
         task.setId(id);
         Task result = taskRepository.save(task);
         return ResponseEntity.ok().body(result);
     }
 
-    @RequestMapping(value = "/tasks/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) throws URISyntaxException {
         taskRepository.delete(id);
         return ResponseEntity.noContent().build();
