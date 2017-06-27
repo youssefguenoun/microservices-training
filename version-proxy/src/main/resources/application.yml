@@ -8,3 +8,19 @@ logging:
     org.springframework.security: DEBUG
     org.springframework.web: DEBUG
 
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false
+
+zuul:
+  sensitive-headers: Cookies,Set-Cookie # Those headers are removed by zuul when forwarding a request, by default it also remove the Authorization header needed for Oauth2 authorization
+  routes:
+    apiv1:
+      path: /api/v1/**
+      url: http://localhost:9001/api
+    apiv2:
+      path: /api/v2/**
+      url: http://localhost:9002/api
