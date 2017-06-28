@@ -25,3 +25,7 @@ nbdist/
 
 ### MAC OS ####
 .DS_Store
+*.DS_Store
+
+discovery-server/*
+

@@ -1,38 +1,38 @@
 <!doctype html>
 <html>
 <head>
-<title>Hello AngularJS</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <title>Hello AngularJS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-	<style type="text/css">
-	[ng\:cloak], [ng-cloak], .ng-cloak {
-		display: none !important;
-	}
-	</style>
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body ng-app="hello" ng-cloak class="ng-cloak">
-	<oauth2 authorization-url="http://localhost:8080/uaa/oauth/authorize"
-			sign-out-url="http://localhost:8080/uaa/oauth/token/revoke"
-			sign-out-append-token="true"
-			client-id="acme"
-			redirect-url="http://localhost:8090/"
-			response-type="token"
-			scope="userinfo">
-	</oauth2>
-	<div ng-controller="navigation as nav" class="container">
-		<ul class="nav nav-pills" role="tablist">
-			<li ng-class="{active:nav.tab('todo')}"><a href="#/">todo</a></li>
-		</ul>
-	</div>
-	<div ng-view class="container"></div>
+<oauth2 authorization-url="http://localhost:8080/openid-connect-server-webapp/authorize"
+        sign-out-url="http://localhost:8080/openid-connect-server-webapp/revoke"
+        sign-out-append-token="true"
+        client-id="e98782c6-cb7e-4520-a6f8-a97a7b9240d8"
+        redirect-url="http://localhost:8090/"
+        response-type="token"
+        scope="api.todo-list-service.v1 profile openid">
+</oauth2>
+<div ng-controller="navigation as nav" class="container">
+    <ul class="nav nav-pills" role="tablist">
+        <li ng-class="{active:nav.tab('todo')}"><a href="#/">todo</a></li>
+    </ul>
+</div>
+<div ng-view class="container"></div>
 
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
-	<script src="js/angular-md5.js"></script>
-	<script src="js/angularJsOAuth2.js"></script>
-	<script src="js/todo.js"></script>
+<script src="js/angular-md5.js"></script>
+<script src="js/angularJsOAuth2.js"></script>
+<script src="js/todo.js"></script>
 </body>
 </html>
-
