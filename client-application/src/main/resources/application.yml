@@ -1,0 +1,9 @@
+
+security:
+  basic:
+    enabled: false
+
+service.url: http://localhost:9001/api/tasks
+
+server:
+  port: 19001

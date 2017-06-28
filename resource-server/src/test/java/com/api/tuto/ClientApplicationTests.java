@@ -22,8 +22,8 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest()
-public class TodoListApplicationTests {
+@SpringBootTest
+public class ClientApplicationTests {
 
 	private RestTemplate restTemplate = new RestTemplate();
 
@@ -69,5 +69,6 @@ public class TodoListApplicationTests {
 		assertThat(taskRepository.findAll()).extracting("content").doesNotContain("Configure your IDE");
 
 	}
+
 
 }
