@@ -1,3 +1,12 @@
 server:
   port: 9001
 
+auth:
+  server:
+    resource-id: a1ea4ba4-5b93-40d8-ac4c-f3790dfb3652
+    resource-secret: Mw0Z31E_hjr81Gi3LTVlyqFtx7051wBrFJIDPDghVIanOXyR7YFIUBTC6OAnrlnAqtzX1O1qPecjcKcMIads4Q
+    authorization-server-endpoints:
+      introspect: http://localhost:8080/openid-connect-server-webapp/introspect
+  service:
+    scopes:
+    - api.todo-list-service.v1

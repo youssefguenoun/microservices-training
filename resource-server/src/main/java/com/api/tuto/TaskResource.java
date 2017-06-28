@@ -4,25 +4,20 @@ package com.api.tuto;
 import com.api.tuto.domain.Task;
 import com.api.tuto.repository.TaskRepository;
 import com.api.tuto.util.PaginationUtil;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.CacheControl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/tasks")
@@ -55,6 +50,7 @@ public class TaskResource {
     }
 
     @PostMapping
+    @PreAuthorize("#oauth2.hasScope('api.todo-list-service.create')")
     public ResponseEntity<Task> createTask(@RequestBody Task task) throws URISyntaxException {
         Task result = taskRepository.save(task);
         URI newRessourceURI = new URI("/api/tasks/" + result.getId());
@@ -70,6 +66,7 @@ public class TaskResource {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("#oauth2.hasScope('api.todo-list-service.delete')")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) throws URISyntaxException {
         taskRepository.delete(id);
         return ResponseEntity.noContent().build();
