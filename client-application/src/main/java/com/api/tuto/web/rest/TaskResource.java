@@ -1,0 +1,34 @@
+package com.api.tuto.web.rest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+
+/**
+ * Created by youssefguenoun on 28/06/2017.
+ */
+@RestController
+@RequestMapping("/tasks")
+public class TaskResource {
+
+    @Value("#{'${service.url}'.trim()}")
+    private String serviceUrl;
+
+    @Autowired
+    private OAuth2RestTemplate oAuth2RestTemplate;
+
+    @GetMapping
+    public ResponseEntity taskDtos() throws URISyntaxException {
+
+        TaskDto[] tasks = oAuth2RestTemplate.getForObject(new URI(serviceUrl), TaskDto[].class);
+
+        return ResponseEntity.ok(tasks);
+    }
+}

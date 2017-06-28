@@ -1,7 +1,13 @@
-
 security:
-  basic:
-    enabled: false
+  oauth2:
+    client:
+      client-credentials:
+        client-id: 7dd0adc1-0fdd-48b1-957f-037dda55cb3e
+        client-secret: cWvTdHqfMs7AFWxpgykJD_jxhvJ4k5Ns-gDN6A-o3GQlFv7N3tE0KDdcCZFl4wS6S00CwMqjnsAq-PFUqYiZ4Q
+        access-token-uri: http://localhost:8080/openid-connect-server-webapp/token
+        scopes:
+        - api.todo-list-service.v1
+        - api.todo-list-service.delete
 
 service.url: http://localhost:9001/api/tasks
 
