@@ -1,0 +1,14 @@
+server:
+  port: 52001
+
+swagger:
+  enabled: true
+  contact-email: guenoun.y@sfeir.com
+  contact-name: Youssef Guenoun
+  security:
+    enabled: false
+  enable-try-out-methods: true
+  include-patterns: ^(?!.*admin).*$
+
+management:
+  context-path: /admin

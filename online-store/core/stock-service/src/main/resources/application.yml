@@ -1,0 +1,21 @@
+management:
+  context-path: /admin
+
+server:
+  port: 52003
+
+swagger:
+  enabled: true
+  contact-email: guenoun.y@sfeir.com
+  contact-name: Youssef Guenoun
+  security:
+    enabled: false
+  enable-try-out-methods: true
+  include-patterns: ^(?!.*admin).*$
+
+
+spring:
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+    serialization.WRITE_DATES_AS_TIMESTAMPS: false
+
