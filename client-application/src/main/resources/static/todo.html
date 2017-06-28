@@ -1,0 +1,17 @@
+<h1>Todo list:</h1>
+
+
+<div class="container">
+	Hello {{userName}}
+
+	<table class="table table-striped">
+		<thead>
+		<td>TODO</td>
+		<td>Completed</td>
+		</thead>
+		<tr ng-repeat="todo in controller.todos">
+			<td>{{todo.content}}</td>
+			<td>{{todo.completed}}</td>
+		</tr>
+	</table>
+</div>
