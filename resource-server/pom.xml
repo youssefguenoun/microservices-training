@@ -50,7 +50,7 @@
 
 		<dependency>
 			<groupId>com.github.ezsecure</groupId>
-			<artifactId>http-cors-starter</artifactId>
+			<artifactId>swagger-security-starter</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>

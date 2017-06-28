@@ -10,3 +10,24 @@ auth:
   service:
     scopes:
     - api.todo-list-service.v1
+
+swagger:
+  enabled: true
+  contact-email: guenoun.y@sfeir.com
+  contact-name: Youssef Guenoun
+  security:
+    enabled: true
+    implicit-flow:
+      authorization-endpoint-url: http://localhost:8080/openid-connect-server-webapp/authorize
+      client-id: 7ab1983b-6572-4be9-91a5-f239d7de0b30
+    global-scopes:
+    -
+      name: openid
+      description: openid connect scope
+    -
+      name: profile
+      description: user profile scope
+    -
+      name: api.todo-list-service.v1
+      description: product service global scope
+  enable-try-out-methods: true
