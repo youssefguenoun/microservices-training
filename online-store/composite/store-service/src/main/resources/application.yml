@@ -1,0 +1,22 @@
+server:
+  port: 52000
+
+swagger:
+  enabled: true
+  contact-email: guenoun.y@sfeir.com
+  contact-name: Youssef Guenoun
+  security:
+    enabled: false
+  enable-try-out-methods: true
+  include-patterns: ^(?!.*admin).*$
+
+management:
+  context-path: /admin
+
+feign.hystrix.enabled: false
+#hystrix.shareSecurityContext: true
+#hystrix.command.default.execution.isolation.thread.timoutInMilliseconds: 10000
+
+security:
+  basic:
+    enabled: false

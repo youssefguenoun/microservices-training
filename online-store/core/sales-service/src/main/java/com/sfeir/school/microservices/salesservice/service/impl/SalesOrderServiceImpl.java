@@ -5,15 +5,21 @@ import com.sfeir.school.microservices.salesservice.repository.SalesOrderReposito
 import com.sfeir.school.microservices.salesservice.repository.specifications.SalesOrderSearchFilter;
 import com.sfeir.school.microservices.salesservice.repository.specifications.SalesOrderSpecificationBuilder;
 import com.sfeir.school.microservices.salesservice.service.SalesOrderService;
+import com.sfeir.school.microservices.salesservice.service.client.stock.api.StockResourceApi;
+import com.sfeir.school.microservices.salesservice.service.client.stock.model.StockViewDTO;
 import com.sfeir.school.microservices.salesservice.service.dto.OrderInputDTO;
 import com.sfeir.school.microservices.salesservice.service.dto.OrderViewDTO;
 import com.sfeir.school.microservices.salesservice.service.mapper.SalesOrderMapper;
+import com.sfeir.school.microservices.util.web.rest.error.ApiException;
+import com.sfeir.school.microservices.util.web.rest.error.ErrorVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -33,10 +39,27 @@ public class SalesOrderServiceImpl implements SalesOrderService {
     @Autowired
     private SalesOrderMapper salesOrderMapper;
 
+    @Autowired
+    private StockResourceApi stockResourceApi;
+
     @Override
     public OrderViewDTO save(OrderInputDTO orderInputDTO) {
 
-        return null;
+        // store the the order into database
+        SalesOrder salesOrder = salesOrderMapper.orderInputDTOToSalesOrder(orderInputDTO);
+        salesOrder = salesOrderRepository.save(salesOrder);
+
+        // Decrease the stock by calling stock-service
+        ResponseEntity<Void> stockViewDTOResponseEntity = stockResourceApi.decreaseStockUsingPOST(orderInputDTO.getProductRef(), orderInputDTO.getQuantity());
+
+        if(stockViewDTOResponseEntity.getStatusCode().equals(HttpStatus.BAD_REQUEST)){
+            ErrorVM productNotFoundError = new ErrorVM("Decreasing quantity from remote stock is not allowed !");
+            productNotFoundError.add("com.sfeir.school.microservices.salesservice.service.client.stock.model.StockInputDto", "productRef", "the stock within the reference "+orderInputDTO.getProductRef()+" not extst !");
+
+            throw new ApiException(productNotFoundError, HttpStatus.BAD_REQUEST);
+        }
+
+        return salesOrderMapper.salesOrderToOrderViewDTO(salesOrder);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.sfeir.school.microservices.salesservice.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,7 +17,8 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 public class OrderInputDTO {
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    //@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @ApiModelProperty(dataType = "DateTime")
     private ZonedDateTime orderDate;
 
     @NotNull

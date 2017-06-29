@@ -13,8 +13,10 @@ swagger:
 management:
   context-path: /admin
 
-spring:
-  jackson:
-    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
-    serialization.WRITE_DATES_AS_TIMESTAMPS: false
 
+feign.hystrix.enabled: false
+#hystrix.shareSecurityContext: true
+#hystrix.command.default.execution.isolation.thread.timoutInMilliseconds: 10000
+security:
+  basic:
+    enabled: false

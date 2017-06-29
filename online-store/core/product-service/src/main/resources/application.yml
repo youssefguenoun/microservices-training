@@ -12,3 +12,8 @@ swagger:
 
 management:
   context-path: /admin
+
+security:
+  basic:
+    enabled: false
+

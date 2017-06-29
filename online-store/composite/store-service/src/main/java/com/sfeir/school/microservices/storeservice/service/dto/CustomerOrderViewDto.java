@@ -12,6 +12,7 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 public class CustomerOrderViewDto {
     private Long id;
+
     private String customer;
 
     private ZonedDateTime orderDate;

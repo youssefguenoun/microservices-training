@@ -3,6 +3,8 @@ package com.sfeir.school.microservices.storeservice.service.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 /**
  * Created by youssefguenoun on 21/06/2017.
  */

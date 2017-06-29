@@ -1,4 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.sfeir.school.microservices.util.config.DateTimeFormatConfiguration,\
 com.sfeir.school.microservices.util.web.rest.error.ApiClientErrorDecoder,\
 com.sfeir.school.microservices.util.web.rest.error.ExceptionTranslator

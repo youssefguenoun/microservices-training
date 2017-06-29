@@ -28,6 +28,8 @@ import java.util.Optional;
 /**
  * Created by youssefguenoun on 21/06/2017.
  */
+@RestController
+@RequestMapping("/orders")
 public class OrderResource {
 
     private final Logger log = LoggerFactory.getLogger(OrderResource.class);
@@ -46,7 +48,7 @@ public class OrderResource {
      * @param id the id of the saleOrderDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the saleOrderDTO, or with status 404 (Not Found)
      */
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<CustomerOrderViewDto> getSaleOrder(
             @PathVariable Long id) {
         log.debug("REST request to get SaleOrder : {}", id);
@@ -69,8 +71,8 @@ public class OrderResource {
      */
     @GetMapping
     public ResponseEntity<List<CustomerOrderViewDto>> getAllSaleOrders(
-            Pageable pageable,
-            String client)
+            @RequestParam Pageable pageable,
+            @RequestParam String client)
             throws URISyntaxException {
         log.debug("REST request to get a page of SaleOrders");
         Page<CustomerOrderViewDto> page = salesOrderService.findAll(pageable, client);
