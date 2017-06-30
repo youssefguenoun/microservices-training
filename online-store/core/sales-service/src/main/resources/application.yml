@@ -1,6 +1,15 @@
 server:
   port: 52002
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    statusPageUrlPath: ${management.contextPath}/info
+    healthCheckUrlPath: ${management.contextPath}/health
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+
 swagger:
   enabled: true
   contact-email: guenoun.y@sfeir.com
@@ -20,3 +29,12 @@ feign.hystrix.enabled: false
 security:
   basic:
     enabled: false
+
+info:
+ stage: step14-solution
+ topic: discovery and registry
+ service: sales-service
+ version: 1.1
+
+stock-service:
+  name: stock-service
