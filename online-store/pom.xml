@@ -30,6 +30,7 @@
 		<module>core/product-service</module>
 		<module>core/sales-service</module>
 		<module>composite/store-service</module>
+		<module>support/discovery-server</module>
 	</modules>
 	
 	<dependencyManagement>
