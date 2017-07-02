@@ -31,8 +31,9 @@
 		<module>core/sales-service</module>
 		<module>composite/store-service</module>
 		<module>support/discovery-server</module>
+		<module>support/circuit-breaker-dashboard</module>
 	</modules>
-	
+
 	<dependencyManagement>
 	    <dependencies>
 	        <dependency>
