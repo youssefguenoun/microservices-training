@@ -32,6 +32,7 @@
 		<module>composite/store-service</module>
 		<module>support/discovery-server</module>
 		<module>support/circuit-breaker-dashboard</module>
+		<module>support/turbine-server</module>
 	</modules>
 
 	<dependencyManagement>
