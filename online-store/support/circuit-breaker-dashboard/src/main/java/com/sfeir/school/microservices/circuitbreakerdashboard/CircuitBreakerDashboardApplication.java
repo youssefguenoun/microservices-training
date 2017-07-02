@@ -2,8 +2,10 @@ package com.sfeir.school.microservices.circuitbreakerdashboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 
 @SpringBootApplication
+@EnableHystrixDashboard
 public class CircuitBreakerDashboardApplication {
 
 	public static void main(String[] args) {

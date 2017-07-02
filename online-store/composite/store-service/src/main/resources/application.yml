@@ -22,7 +22,7 @@ swagger:
 management:
   context-path: /admin
 
-feign.hystrix.enabled: false
+feign.hystrix.enabled: true
 #hystrix.shareSecurityContext: true
 #hystrix.command.default.execution.isolation.thread.timoutInMilliseconds: 10000
 
