@@ -9,6 +9,8 @@ eureka:
     statusPageUrlPath: ${management.contextPath}/info
     healthCheckUrlPath: ${management.contextPath}/health
     instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    metadata-map:
+      management.context-path: /admin
 
 swagger:
   enabled: true
