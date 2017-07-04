@@ -1,0 +1,27 @@
+info:
+  component: Zuul Server
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+zuul:
+  #ignoredServices: '*'
+  routes:
+    omnidata-shop:
+      path: /omnishop/**
+      serviceId: store-service
+server:
+  port: 8765
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: INFO
