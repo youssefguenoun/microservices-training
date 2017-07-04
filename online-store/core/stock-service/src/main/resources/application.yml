@@ -27,6 +27,11 @@ spring:
   jackson:
     date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
     serialization.WRITE_DATES_AS_TIMESTAMPS: false
+  sleuth:
+    sampler:
+      percentage: 1.0
+  zipkin:
+    baseUrl: http://localhost:9411/
 
 security:
   basic:

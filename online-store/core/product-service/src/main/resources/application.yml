@@ -26,6 +26,13 @@ security:
   basic:
     enabled: false
 
+spring:
+  sleuth:
+    sampler:
+      percentage: 1.0
+  zipkin:
+    baseUrl: http://localhost:9411/
+
 info:
  stage: step14-solution
  topic: discovery and registry

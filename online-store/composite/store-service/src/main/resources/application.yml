@@ -43,3 +43,9 @@ stock-service.name: stock-service
 sales-service.name: sales-service
 
 product-service.name: product-service
+spring:
+  sleuth:
+    sampler:
+      percentage: 1.0
+  zipkin:
+    baseUrl: http://localhost:9411/

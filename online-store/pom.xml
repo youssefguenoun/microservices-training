@@ -32,7 +32,7 @@
 		<module>composite/store-service</module>
 		<module>support/discovery-server</module>
 		<module>support/circuit-breaker-dashboard</module>
-		<module>support/zipkin-server</module>
+		<module>support/edge-server</module>
 	</modules>
 
 	<dependencyManagement>
