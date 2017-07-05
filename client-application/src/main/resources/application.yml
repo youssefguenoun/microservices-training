@@ -1,7 +1,12 @@
-
 security:
-  basic:
-    enabled: false
+  oauth2:
+    client:
+      client-credentials:
+        client-id: YOUR_CLIENT_ID
+        client-secret: YOUR_CLIENT_SECRET
+        access-token-uri: RESOURCE_SERVER_ACCESS_TOKEN_URL
+        scopes: # Fill the list of required scopes
+        # - 
 
 service.url: http://localhost:9001/api/tasks
 
