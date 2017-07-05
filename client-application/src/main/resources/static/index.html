@@ -12,14 +12,14 @@
 </head>
 
 <body ng-app="hello" ng-cloak class="ng-cloak">
-	<oauth2 authorization-url="http://localhost:8080/uaa/oauth/authorize"
-			sign-out-url="http://localhost:8080/uaa/oauth/token/revoke"
-			sign-out-append-token="true"
-			client-id="acme"
-			redirect-url="http://localhost:8090/"
-			response-type="token"
-			scope="userinfo">
-	</oauth2>
+<oauth2 authorization-url="http://localhost:8080/openid-connect-server-webapp/authorize"
+        sign-out-url="http://localhost:8080/openid-connect-server-webapp/revoke"
+        sign-out-append-token="true"
+        client-id="e98782c6-cb7e-4520-a6f8-a97a7b9240d8"
+        redirect-url="http://localhost:8090/"
+        response-type="token"
+        scope="profile openid">
+</oauth2>
 	<div ng-controller="navigation as nav" class="container">
 		<ul class="nav nav-pills" role="tablist">
 			<li ng-class="{active:nav.tab('todo')}"><a href="#/">todo</a></li>
