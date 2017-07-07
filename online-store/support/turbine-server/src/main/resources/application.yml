@@ -22,6 +22,13 @@ info:
  topic: Circuit Breaker
  service: turbine-server
  version: 1.3
+
 management:
   context-path: /admin
+
+turbine:
+  app-config: store-service, sales-service
+  cluster-name-expression: "'default'"
+  instanceUrlSuffix:
+    default: admin/hystrix.stream
 
