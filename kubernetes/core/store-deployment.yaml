@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: store
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: store
+        version: v1
+        visualize: "true"
+    spec:
+      containers:
+      - name: store
+        image: yguenoun/store-service:0.0.1-SNAPSHOT
+        imagePullPolicy: Always #IfNotPresent
+        ports:
+        - containerPort: 80
+        env:
+        - name: PRODUCT_URL
+          value: "http://product"
+        - name: STOCK_URL
+          value: "http://stock"
+        - name: SALES_URL
+          value: "http://stock"          
+        - name: PORT
+          value: "80"
+        livenessProbe:
+          httpGet:
+            path: /admin/health
+            port: 80
+          initialDelaySeconds: 60
+          periodSeconds: 10 # default is 10s
+        readinessProbe:
+          httpGet:
+            path: /admin/health
+            port: 80
+          initialDelaySeconds: 5
