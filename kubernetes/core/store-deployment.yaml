@@ -23,7 +23,7 @@ spec:
         - name: STOCK_URL
           value: "http://stock"
         - name: SALES_URL
-          value: "http://stock"          
+          value: "http://sales"          
         - name: PORT
           value: "80"
         livenessProbe:
