@@ -11,4 +11,4 @@ spec:
     name: http
     targetPort: 80
   selector:
-    app: frontend
+    app: sales
