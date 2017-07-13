@@ -2,6 +2,6 @@ package com.sfeir.school.microservices.salesservice.service.client.stock.api;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 
-@FeignClient(name="${stock-service.name:stock}", url="${stock-service.url:http://localhost:52003}")
+@FeignClient(name ="stock", url="${stock-service.name}")
 public interface StockResourceApiClient extends StockResourceApi {
 }

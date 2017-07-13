@@ -1,0 +1,27 @@
+{
+  "apiVersion": "extensions/v1beta1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "hello-kubernetes-deployment",
+    "labels": {
+      "visualize": "true"
+    }
+  },
+  "spec": {
+    "replicas": 2,
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "hello-kubernetes-pod",
+          "visualize": "true"
+        }
+      },
+      "spec": {
+        "containers": [{
+          "image": "library/hello-world:latest",
+          "name": "hello-kubernetes"
+        }]
+      }
+    }
+  }
+}

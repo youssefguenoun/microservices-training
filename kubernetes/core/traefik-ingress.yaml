@@ -4,7 +4,7 @@ metadata:
   name: onlinestore
 spec:
   rules:
-  - host: store.local
+  - host: store.online.com
     http:
       paths:
       - path: /

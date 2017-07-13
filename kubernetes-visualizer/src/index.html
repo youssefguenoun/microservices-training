@@ -1,0 +1,51 @@
+<!--
+Copyright 2014 Google Inc. All rights reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!doctype html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="navbar">
+      <p class="header-title">Cloud visualizer</p>
+
+      <div id="pod-error" class="error hide">Pod error <br/> <span class="message"></span></div>
+      <div id="deployment-error" class="error hide">Deployment error <br/> <span class="message"></span></div>
+      <div id="service-error" class="error hide">Service error <br/> <span class="message"></span></div>
+      <div id="node-error" class="error hide">Node error <br/> <span class="message"></span></div>
+
+      <div class="navbar-logo">
+        <img src="assets/kubernetes-logo.svg" alt="Kubernetes logo">
+      </div>
+    </div>
+    <div class="nodesbar">
+      <div class="canvas"></div>
+    </div>
+    <div class="cluster">
+      <div class="canvas"></div>
+    </div>
+  </div>
+
+  <script src="vendor/jsPlumb-2.1.2-min.js"></script>
+  <script src="scripts/utils.js"></script>
+  <script src="scripts/rendering.js"></script>
+  <script src="scripts/script.js"></script>
+</body>
+
+</html>
