@@ -1,0 +1,39 @@
+management:
+  context-path: /admin
+
+server:
+  port: 52003
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+
+swagger:
+  enabled: true
+  contact-email: guenoun.y@sfeir.com
+  contact-name: Youssef Guenoun
+  security:
+    enabled: false
+  enable-try-out-methods: true
+  include-patterns: ^(?!.*admin).*$
+
+
+spring:
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+    serialization.WRITE_DATES_AS_TIMESTAMPS: false
+
+security:
+  basic:
+    enabled: false
+
+info:
+ stage: step14-solution
+ topic: discovery and registry
+ service: stock-service
+ version: 1.1

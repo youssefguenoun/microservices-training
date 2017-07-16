@@ -1,0 +1,4 @@
+management.security.enabled: false
+#spring.boot.admin.discovery.converter.mangement-context-path: /admin
+server:
+  port: 9009

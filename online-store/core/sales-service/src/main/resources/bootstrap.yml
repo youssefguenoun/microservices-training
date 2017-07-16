@@ -1,34 +1,3 @@
 spring:
   application:
     name: sales-service
-  cloud:
-    config:
-      failFast: true
-      discovery:
-        serviceId: config-server
-        enabled: true
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    statusPageUrlPath: ${management.contextPath}/info
-    healthCheckUrlPath: ${management.contextPath}/health
-    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
-    metadata-map:
-      management.context-path: /admin
-
-management:
-  context-path: /admin
-
-feign.hystrix.enabled: true
-#hystrix.shareSecurityContext: true
-#hystrix.command.default.execution.isolation.thread.timoutInMilliseconds: 10000
-
-security:
-  basic:
-    enabled: false
-
-stock-service:
-  name: stock-service
